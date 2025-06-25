@@ -7,6 +7,15 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+
+/* JPA is the specification
+hibernate is the implementation of JPA(Java Persistence API)
+
+
+JpaRepository and CrudRepository
+
+*/
+
 @SpringBootApplication
 public class SpringBootJpaApplication {
 
@@ -168,10 +177,22 @@ public class SpringBootJpaApplication {
 //		nameList.forEach((s)-> System.out.println(s));
 
 		
-		List<Student> students = stud.findByMarksOrderByMarks(7);
-        for (Student s : students) {
-            System.out.println(s.getName() + " - " + s.getMarks());
-        }		
+//		List<Student> studlist=  stud.getAllData();    
+//		studlist.forEach((s)-> System.out.println(s));
+		
+		
+//		List<Student> studlist=  stud.getAllStudentByUsingOrderClause();    
+//		studlist.forEach((s)-> System.out.println(s));
+		
+		
+//		List<Student> studlist=  stud.getStudentWithNameAndMarks("Jayesh", 358.25);    
+//		studlist.forEach((s)-> System.out.println(s));
+		
+		
+		List<Student> studlist=  stud.getAllStuds();    
+		studlist.forEach((s)-> System.out.println(s));
+		
+				
 	}
 
 }
