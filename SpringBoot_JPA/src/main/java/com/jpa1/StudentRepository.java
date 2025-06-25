@@ -3,6 +3,8 @@ package com.jpa1;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 
 public interface StudentRepository extends JpaRepository<Student, Integer> {
@@ -27,7 +29,25 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     public List<Student> findByMarksGreaterThanEqual(double marks);
     
     public List<Student> findByMarksIn(List<Double> marks);
-//    
-    public List<Student> findByMarksOrderByMarks(double m);
 
+    
+    //JPQL / HQL Query
+    
+    @Query("select s from Student s")
+    public List<Student> getAllData();   //select * from studen
+    
+    // @Query("select s from Student s order by marks desc")
+    @Query("select s from Student s order by marks")
+    public List<Student> getAllStudentByUsingOrderClause();   //select * from studen
+        
+    
+     @Query("select s from Student s where name=:n AND marks=:m") //HQL/JPQL
+     public List<Student> getStudentWithNameAndMarks(@Param("n") String name,@Param("m") double marks);
+     
+     
+     
+     //2.native query
+      @Query(value = "select * from Student", nativeQuery = true) //SQL
+      public List<Student> getAllStuds();
+    
 }
