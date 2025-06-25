@@ -18,9 +18,6 @@ public class Student {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String name;
-	private double marks;
-	
-	
-	
+	private double marks;	
 
 }
